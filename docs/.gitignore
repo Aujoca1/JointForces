@@ -1,0 +1,83 @@
+﻿# Отчет по Практической работе №3.2
+## Настройка NGINX и Docker Swarm для микросервисов
+
+### Студент: [Ваше имя]
+### Группа: [Ваша группа]
+### Дата: $(Get-Date -Format "dd.MM.yyyy")
+
+### 1. Цель работы
+Настройка конфигурации NGINX в качестве reverse proxy и балансировщика нагрузки для микросервисов, развертывание с использованием Docker Swarm.
+
+### 2. Выполненные шаги
+
+#### 2.1. Создание структуры проекта
+
+#### 2.2. Настройка NGINX
+Создан файл `nginx/nginx.conf` со следующей конфигурацией:
+- Upstream для балансировки нагрузки между тремя сервисами
+- Маршрутизация запросов по разным URL
+- Настройки proxy для корректной передачи заголовков
+
+#### 2.3. Разработка микросервисов
+Создано три микросервиса:
+1. **Service1**: Node.js + Express (порт 3001)
+2. **Service2**: Python + Flask (порт 3002)
+3. **Service3**: Python HTTP сервер с HTML (порт 3003)
+
+Каждый сервис имеет:
+- Dockerfile для контейнеризации
+- Health check endpoint (`/health`)
+- JSON API или HTML интерфейс
+
+#### 2.4. Конфигурация Docker Swarm
+Создан `docker-swarm/docker-compose.yml` с:
+- Определением 4 сервисов (nginx + 3 микросервиса)
+- Настройкой репликации для отказоустойчивости
+- Overlay сетью для связи между контейнерами
+- Ограничениями ресурсов
+
+#### 2.5. Скрипты автоматизации
+- `deploy.sh` - развертывание стека в Swarm
+- `cleanup.sh` - удаление стека и очистка
+
+### 3. Архитектура системы
+
+### 4. Команды для запуска
+```bash
+# Перейти в папку проекта
+cd JointForces/docker-swarm
+
+# Дать права на выполнение скриптов
+chmod +x deploy.sh cleanup.sh
+
+# Развернуть стек
+./deploy.sh
+
+# Проверить статус
+docker service ls
+docker stack ps microservices
+
+## **Шаг 5: Добавляем .gitignore**
+```powershell
+# Создаем .gitignore
+@'
+# Node.js
+node_modules/
+npm-debug.log
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Docker
+docker-data/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
