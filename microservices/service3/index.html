@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Service 3</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        .container { max-width: 800px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Microservice 3</h1>
+        <p>Simple HTML service</p>
+        <p id="timestamp"></p>
+    </div>
+    <script>
+        document.getElementById('timestamp').textContent = 
+            'Current time: ' + new Date().toLocaleString();
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>NGINX + Microservices</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #333; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .service { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✅ NGINX успешно работает с микросервисами</h1>
+        <p>Все сервисы доступны:</p>
+        
+        <div class="service">
+            <h3>🔧 Service 1 (Node.js)</h3>
+            <p><a href="http://localhost:3001" target="_blank">http://localhost:3001</a></p>
+            <p>Health check: <a href="http://localhost:3001/health" target="_blank">/health</a></p>
+        </div>
+        
+        <div class="service">
+            <h3>🐍 Service 2 (Python Flask)</h3>
+            <p><a href="http://localhost:3002" target="_blank">http://localhost:3002</a></p>
+            <p>Health check: <a href="http://localhost:3002/health" target="_blank">/health</a></p>
+        </div>
+        
+        <div class="service">
+            <h3>🌐 Service 3 (Python HTTP Server)</h3>
+            <p><a href="http://localhost:3003" target="_blank">http://localhost:3003</a></p>
+            <p>Health check: <a href="http://localhost:3003/health" target="_blank">/health</a></p>
+        </div>
+    </div>
+</body>
+</html>

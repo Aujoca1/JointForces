@@ -1,0 +1,30 @@
+﻿version: '3.8'
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - service1
+      - service2
+      - service3
+
+  service1:
+    build: ./microservices/service1
+    ports:
+      - "3001:3000"
+    environment:
+      - PORT=3000
+
+  service2:
+    build: ./microservices/service2
+    ports:
+      - "3002:3000"
+    environment:
+      - FLASK_ENV=development
+
+  service3:
+    build: ./microservices/service3
+    ports:
+      - "3003:3000"
